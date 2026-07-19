@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bisu Profesional VD - Aprende a Crear Bisutería Premium</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #FFF5FA;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        button {
+            font-family: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function LandingBisuteria() {
+            const [expandedFaq, setExpandedFaq] = useState(null);
+            const [timeLeft, setTimeLeft] = useState({ hours: 24, minutes: 0, seconds: 0 });
+
+            useEffect(() => {
+                const timer = setInterval(() => {
+                    setTimeLeft(prev => {
+                        let { hours, minutes, seconds } = prev;
+                        if (seconds > 0) seconds--;
+                        else if (minutes > 0) { minutes--; seconds = 59; }
+                        else if (hours > 0) { hours--; minutes = 59; seconds = 59; }
+                        else { hours = 24; minutes = 0; seconds = 0; }
+                        return { hours, minutes, seconds };
+                    });
+                }, 1000);
+                return () => clearInterval(timer);
+            }, []);
+
+            const handleClick = (e) => {
+                window.location.href = 'https://go.hotmart.com/V106696153J?ap=da1f';
+            };
+
+            const CTAButton = ({ text = 'QUIERO MI NEGOCIO AHORA' }) => (
+                <button
+                    onClick={handleClick}
+                    style={{
+                        background: 'linear-gradient(135deg, #E75480 0%, #D946A6 100%)',
+                        color: 'white',
+                        padding: '16px 40px',
+                        fontSize: '1rem',
+                        fontWeight: 'bold',
+                        borderRadius: '8px',
+                        border: 'none',
+                        cursor: 'pointer',
+                        boxShadow: '0 8px 24px rgba(231, 84, 128, 0.35)',
+                        transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        textDecoration: 'none',
+                        display: 'inline-block'
+                    }}
+                    onMouseEnter={(e) => {
+                        e.target.style.transform = 'translateY(-3px) scale(1.05)';
+                        e.target.style.boxShadow = '0 12px 32px rgba(231, 84, 128, 0.45)';
+                    }}
+                    onMouseLeave={(e) => {
+                        e.target.style.transform = 'translateY(0) scale(1)';
+                        e.target.style.boxShadow = '0 8px 24px rgba(231, 84, 128, 0.35)';
+                    }}
+                >
+                    {text}
+                </button>
+            );
+
+            return (
+                <div style={{ backgroundColor: '#FFF5FA', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial' }}>
+                    {/* HERO */}
+                    <section style={{
+                        background: 'linear-gradient(180deg, #FFF5FA 0%, #FFE8F5 50%, #FFD4E8 100%)',
+                        paddingTop: '48px',
+                        paddingBottom: '60px',
+                        position: 'relative',
+                        overflow: 'hidden'
+                    }}>
+                        <div style={{
+                            position: 'absolute',
+                            top: '-200px',
+                            right: '-100px',
+                            width: '600px',
+                            height: '600px',
+                            borderRadius: '50%',
+                            background: 'radial-gradient(circle, rgba(231, 84, 128, 0.15) 0%, transparent 70%)',
+                            filter: 'blur(80px)',
+                            pointerEvents: 'none'
+                        }}></div>
+
+                        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', position: 'relative', zIndex: 10 }}>
+                            <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                                <span style={{
+                                    display: 'inline-block',
+                                    backgroundColor: '#FFF3E0',
+                                    color: '#B8860B',
+                                    padding: '10px 28px',
+                                    borderRadius: '50px',
+                                    fontSize: '0.9rem',
+                                    fontWeight: '700',
+                                    letterSpacing: '0.5px',
+                                    boxShadow: '0 4px 12px rgba(184, 134, 11, 0.15)'
+                                }}>
+                                    🔥 OFERTA ESPECIAL: 75% DE DESCUENTO
+                                </span>
+                            </div>
+
+                            <div style={{
+                                textAlign: 'center',
+                                marginBottom: '40px',
+                                backgroundColor: 'rgba(231, 84, 128, 0.08)',
+                                padding: '20px',
+                                borderRadius: '12px',
+                                border: '1px solid rgba(231, 84, 128, 0.2)'
+                            }}>
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '12px' }}>
+                                    <span style={{ fontSize: '28px' }}>⏱️</span>
+                                    <div style={{ fontSize: '2.2rem', fontWeight: '900', color: '#E75480', fontFamily: 'monospace', letterSpacing: '2px' }}>
+                                        {String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
+                                    </div>
+                                </div>
+                                <p style={{ margin: 0, color: '#666', fontSize: '0.9rem' }}>✅ Acceso inmediato • Garantía 7 días • Sin riesgos</p>
+                            </div>
+
+                            <h1 style={{
+                                fontSize: 'clamp(2rem, 8vw, 3.5rem)',
+                                fontFamily: '"Playfair Display", serif',
+                                textAlign: 'center',
+                                color: '#2D2D2D',
+                                marginBottom: '24px',
+                                fontWeight: '900',
+                                lineHeight: '1.1'
+                            }}>
+                                Aprende a Crear Bisutería Premium y Vende desde Hoy
+                            </h1>
+
+                            <p style={{
+                                fontSize: 'clamp(1rem, 3vw, 1.3rem)',
+                                textAlign: 'center',
+                                color: '#666',
+                                marginBottom: '40px',
+                                maxWidth: '800px',
+                                margin: '0 auto 40px'
+                            }}>
+                                Curso pregrabado • Acceso inmediato • 15 días para dominar técnicas de wire wrapping, coiling y diseño
+                            </p>
+
+                            <div style={{ maxWidth: '100%', marginBottom: '40px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 16px 48px rgba(0, 0, 0, 0.1)' }}>
+                                <iframe
+                                    width="100%"
+                                    height="400"
+                                    src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                                    title="Intro curso bisutería"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    style={{ display: 'block' }}
+                                ></iframe>
+                            </div>
+
+                            <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                                <CTAButton text="ACCESO POR $34 USD HOY" />
+                            </div>
+
+                            <div style={{
+                                maxWidth: '600px',
+                                margin: '0 auto',
+                                textAlign: 'center',
+                                padding: '32px',
+                                backgroundColor: 'white',
+                                borderRadius: '12px',
+                                border: '2px solid #FFB6D9',
+                                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)'
+                            }}>
+                                <p style={{ fontSize: '0.95rem', color: '#666', marginBottom: '12px' }}>Valorado en</p>
+                                <div style={{ fontSize: '1.2rem', marginBottom: '8px' }}>
+                                    <span style={{ textDecoration: 'line-through', color: '#999' }}>~~$137 USD~~</span>
+                                </div>
+                                <h3 style={{
+                                    fontSize: '3rem',
+                                    fontWeight: '900',
+                                    color: '#E75480',
+                                    fontFamily: '"Playfair Display", serif',
+                                    margin: '0 0 12px 0'
+                                }}>
+                                    $34 USD
+                                </h3>
+                                <p style={{ color: '#666', margin: 0, fontSize: '0.9rem' }}>
+                                    Acceso por 2 años + Bonos (valorados en $247) GRATIS
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* PROBLEMAS */}
+                    <section style={{ backgroundColor: 'white', padding: '80px 20px', borderTop: '1px solid #FFB6D9' }}>
+                        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                            <h2 style={{
+                                fontSize: '2.8rem',
+                                fontFamily: '"Playfair Display", serif',
+                                textAlign: 'center',
+                                color: '#2D2D2D',
+                                marginBottom: '48px',
+                                fontWeight: '900'
+                            }}>
+                                ¿Por Qué No Vendes?
+                            </h2>
+
+                            <div style={{ display: 'grid', gap: '24px', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+                                {[
+                                    {
+                                        num: '01',
+                                        title: 'Aprendiste a hacer piezas',
+                                        desc: 'Pero no sabes cómo VENDERLAS. Creas piezas bonitas pero el dinero no entra. 💔'
+                                    },
+                                    {
+                                        num: '02',
+                                        title: 'No tienes técnicas avanzadas',
+                                        desc: 'Tus piezas se ven "caseras". Necesitas wire wrapping, coiling, tramado con estilo. 🔧'
+                                    },
+                                    {
+                                        num: '03',
+                                        title: 'Sin marca ni identidad',
+                                        desc: 'Tus creaciones no tienen HISTORIA. La gente ve accesorios, no inversiones. ✨'
+                                    }
+                                ].map((problema, idx) => (
+                                    <div key={idx} style={{
+                                        padding: '32px',
+                                        backgroundColor: '#FFF5FA',
+                                        borderRadius: '12px',
+                                        borderLeft: '5px solid #E75480'
+                                    }}>
+                                        <p style={{ color: '#E75480', fontWeight: '700', fontSize: '0.95rem', margin: '0 0 12px 0' }}>
+                                            Problema {problema.num}
+                                        </p>
+                                        <h3 style={{ fontSize: '1.3rem', fontWeight: '900', color: '#2D2D2D', marginBottom: '12px' }}>
+                                            {problema.title}
+                                        </h3>
+                                        <p style={{ color: '#666', lineHeight: '1.6', margin: 0 }}>
+                                            {problema.desc}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* PILARES */}
+                    <section style={{ backgroundColor: '#FFF5FA', padding: '80px 20px' }}>
+                        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                            <h2 style={{
+                                fontSize: '2.8rem',
+                                fontFamily: '"Playfair Display", serif',
+                                textAlign: 'center',
+                                color: '#2D2D2D',
+                                marginBottom: '48px',
+                                fontWeight: '900'
+                            }}>
+                                Los 3 Pilares del Negocio
+                            </h2>
+
+                            <div style={{ display: 'grid', gap: '24px', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
+                                {[
+                                    { icon: '🔨', title: 'DOMINA LAS TÉCNICAS', desc: 'Wire wrapping, coiling, espirales, tramado. Crea 15 piezas PREMIUM paso a paso.' },
+                                    { icon: '✨', title: 'CONSTRUYE TU MARCA', desc: 'Crea colecciones con identidad. Tus piezas cuenten HISTORIAS que se venden.' },
+                                    { icon: '💰', title: 'MONETIZA AL INSTANTE', desc: 'Catalogo listo para vender. Precios que reflejen el trabajo premium. Dinero real.' }
+                                ].map((pilar, idx) => (
+                                    <div key={idx} style={{
+                                        padding: '32px',
+                                        backgroundColor: 'white',
+                                        borderRadius: '16px',
+                                        border: '1px solid #FFB6D9',
+                                        textAlign: 'center',
+                                        transition: 'all 0.3s ease',
+                                        cursor: 'pointer'
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(-8px)';
+                                        e.currentTarget.style.boxShadow = '0 16px 48px rgba(231, 84, 128, 0.15)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                        e.currentTarget.style.boxShadow = 'none';
+                                    }}
+                                    >
+                                        <div style={{ fontSize: '3.5rem', marginBottom: '16px' }}>{pilar.icon}</div>
+                                        <h3 style={{ fontSize: '1.3rem', fontWeight: '900', color: '#2D2D2D', marginBottom: '12px' }}>
+                                            {pilar.title}
+                                        </h3>
+                                        <p style={{ color: '#666', lineHeight: '1.6', margin: 0 }}>{pilar.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* 4 FASES */}
+                    <section style={{ backgroundColor: 'white', padding: '80px 20px', borderTop: '1px solid #FFB6D9' }}>
+                        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                            <h2 style={{
+                                fontSize: '2.8rem',
+                                fontFamily: '"Playfair Display", serif',
+                                textAlign: 'center',
+                                color: '#2D2D2D',
+                                marginBottom: '20px',
+                                fontWeight: '900'
+                            }}>
+                                Tu Transformación en 15 Días
+                            </h2>
+                            <p style={{ textAlign: 'center', color: '#666', marginBottom: '48px', fontSize: '1.05rem' }}>
+                                Un mapa claro de cada paso que darás
+                            </p>
+
+                            <div style={{ display: 'grid', gap: '20px', marginBottom: '48px' }}>
+                                {[
+                                    { num: '01', days: 'DÍA 1-3: Transforma en Brillo', desc: 'Aprendés desde cero. Dominas bases, materiales y creás tus primeras 4 piezas. Ya tienes tu primer catálogo.', color: '#FFE8F5' },
+                                    { num: '02', days: 'DÍA 4-7: Tu Primera Colección', desc: 'Técnicas avanzadas (coiling, espirales). Tu catálogo entra en línea PREMIUM. Creás brazaletes que piden precio.', color: '#FFE8F5' },
+                                    { num: '03', days: 'DÍA 8-11: Tramado con Identidad', desc: 'Técnicas finas deseadas. Piezas elegantes con HISTORIA. Creas colecciones que la gente quiere tener.', color: '#FFD4E8' },
+                                    { num: '04', days: 'DÍA 12-15: El Brillo que Empodera', desc: 'Terminas con 15 piezas PREMIUM. Tu catálogo está listo. Ya no solo sabes crear: ESTÁS LISTA PARA VENDER.', color: '#E8F5FF' }
+                                ].map((fase, idx) => (
+                                    <div key={idx} style={{
+                                        padding: '32px',
+                                        backgroundColor: fase.color,
+                                        borderRadius: '12px',
+                                        borderLeft: '5px solid #E75480',
+                                        display: 'grid',
+                                        gridTemplateColumns: '80px 1fr',
+                                        gap: '24px'
+                                    }}>
+                                        <div style={{ fontSize: '2.5rem', fontWeight: '900', color: '#E75480', fontFamily: '"Playfair Display", serif' }}>
+                                            {fase.num}
+                                        </div>
+                                        <div>
+                                            <h3 style={{ fontSize: '1.2rem', fontWeight: '900', color: '#2D2D2D', marginBottom: '8px' }}>
+                                                {fase.days}
+                                            </h3>
+                                            <p style={{ color: '#666', lineHeight: '1.6', margin: 0 }}>{fase.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+                                <CTAButton text="EMPEZAR EL VIAJE AHORA" />
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* PROYECTOS */}
+                    <section style={{ backgroundColor: '#FFF5FA', padding: '80px 20px' }}>
+                        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                            <h2 style={{
+                                fontSize: '2.8rem',
+                                fontFamily: '"Playfair Display", serif',
+                                textAlign: 'center',
+                                color: '#2D2D2D',
+                                marginBottom: '48px',
+                                fontWeight: '900'
+                            }}>
+                                Ejemplos de Tus Creaciones
+                            </h2>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px', marginBottom: '48px' }}>
+                                {[
+                                    { emoji: '💎', title: 'Brazalete Turquesa Premium', desc: 'Técnica avanzada de wire wrapping con piedras naturales' },
+                                    { emoji: '✨', title: 'Anillo Regulable de Piedras', desc: 'Diseño elegante y versátil para cualquier ocasión' },
+                                    { emoji: '🎀', title: 'Aretes Globo Corazón', desc: 'Creaciones delicadas con materiales de calidad' }
+                                ].map((proyecto, idx) => (
+                                    <div key={idx} style={{
+                                        backgroundColor: 'white',
+                                        borderRadius: '16px',
+                                        overflow: 'hidden',
+                                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+                                        border: '1px solid #FFB6D9'
+                                    }}>
+                                        <div style={{
+                                            width: '100%',
+                                            height: '300px',
+                                            backgroundColor: '#FFE8F5',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            fontSize: '120px'
+                                        }}>
+                                            {proyecto.emoji}
+                                        </div>
+                                        <div style={{ padding: '24px' }}>
+                                            <h3 style={{ fontSize: '1.2rem', fontWeight: '900', color: '#2D2D2D', marginBottom: '8px' }}>
+                                                {proyecto.title}
+                                            </h3>
+                                            <p style={{ color: '#666', fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>
+                                                {proyecto.desc}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div style={{ backgroundColor: '#FFE8F5', padding: '24px', borderRadius: '12px', marginBottom: '48px', border: '2px solid #E75480', textAlign: 'center' }}>
+                                <p style={{ color: '#2D2D2D', fontWeight: '700', fontSize: '1rem', margin: 0 }}>
+                                    💡 Los emojis arriba son placeholders. Puedes reemplazarlos con tus fotos reales.
+                                </p>
+                            </div>
+
+                            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+                                <CTAButton text="APRENDER A CREAR ESTO Y MÁS" />
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* INCLUYE */}
+                    <section style={{ backgroundColor: 'white', padding: '80px 20px' }}>
+                        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                            <h2 style={{
+                                fontSize: '2.8rem',
+                                fontFamily: '"Playfair Display", serif',
+                                textAlign: 'center',
+                                color: '#2D2D2D',
+                                marginBottom: '48px',
+                                fontWeight: '900'
+                            }}>
+                                Lo Que Incluye Tu Acceso
+                            </h2>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '48px' }}>
+                                {[
+                                    { icon: '▶️', title: '15 Videoclases', desc: 'Paso a paso desde cero hasta PREMIUM' },
+                                    { icon: '⚡', title: 'Acceso 2 Años', desc: 'Revisa cuando quieras, cuantas veces quieras' },
+                                    { icon: '✅', title: '3 Bonos Gratis', desc: 'Asesorías, herramientas exclusivas y más' },
+                                    { icon: '🔒', title: 'Comunidad Privada', desc: 'Resuelve dudas con otras estudiantes' },
+                                    { icon: '⭐', title: 'Garantía 7 Días', desc: 'Si no te gusta, devolvemos tu dinero' },
+                                    { icon: '⏰', title: 'Soporte Prioritario', desc: 'Respuestas a tus preguntas en 24h' }
+                                ].map((item, idx) => (
+                                    <div key={idx} style={{
+                                        padding: '24px',
+                                        backgroundColor: '#FFF5FA',
+                                        borderRadius: '12px',
+                                        border: '1px solid #FFB6D9',
+                                        textAlign: 'center'
+                                    }}>
+                                        <div style={{ color: '#E75480', marginBottom: '12px', fontSize: '32px' }}>
+                                            {item.icon}
+                                        </div>
+                                        <h3 style={{ fontSize: '1.1rem', fontWeight: '900', color: '#2D2D2D', marginBottom: '8px' }}>
+                                            {item.title}
+                                        </h3>
+                                        <p style={{ color: '#666', fontSize: '0.9rem', lineHeight: '1.5', margin: 0 }}>
+                                            {item.desc}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+                                <CTAButton text="ACCESO AL CONTENIDO COMPLETO" />
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* BONOS */}
+                    <section style={{
+                        background: 'linear-gradient(135deg, #E75480 0%, #D946A6 100%)',
+                        color: 'white',
+                        padding: '80px 20px'
+                    }}>
+                        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                            <h2 style={{
+                                fontSize: '2.8rem',
+                                fontFamily: '"Playfair Display", serif',
+                                textAlign: 'center',
+                                marginBottom: '20px',
+                                fontWeight: '900'
+                            }}>
+                                🎁 PERO ESPÉRATE...
+                            </h2>
+                            <p style={{ textAlign: 'center', fontSize: '1.3rem', marginBottom: '48px', fontWeight: '600' }}>
+                                Si te inscribes HOY recibirás 3 BONOS (valorados en $247)
+                            </p>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '48px' }}>
+                                {[
+                                    { num: 'BONO 1', title: 'Asesoría Privada 1 Hora', desc: 'Sesión 1-a-1 conmigo. Resuelvo tus dudas específicas. (Valor: $97)' },
+                                    { num: 'BONO 2', title: 'Kit de Herramientas Premium', desc: 'Plantillas, guía, checklist y catálogo de referencia. (Valor: $75)' },
+                                    { num: 'BONO 3', title: 'Acceso a Comunidad VIP', desc: 'Acceso 3 meses a grupo privado y networking. (Valor: $75)' }
+                                ].map((bono, idx) => (
+                                    <div key={idx} style={{
+                                        padding: '28px',
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                        borderRadius: '12px',
+                                        border: '1px solid rgba(255, 255, 255, 0.3)'
+                                    }}>
+                                        <p style={{ fontSize: '0.9rem', fontWeight: '700', margin: '0 0 12px 0' }}>
+                                            {bono.num}
+                                        </p>
+                                        <h3 style={{ fontSize: '1.2rem', fontWeight: '900', marginBottom: '12px' }}>
+                                            {bono.title}
+                                        </h3>
+                                        <p style={{ fontSize: '0.95rem', lineHeight: '1.6', margin: 0 }}>
+                                            {bono.desc}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+                                <CTAButton text="QUIERO LOS BONOS GRATIS AHORA" />
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* TESTIMONIOS */}
+                    <section style={{ backgroundColor: '#FFF5FA', padding: '80px 20px' }}>
+                        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+                            <h2 style={{
+                                fontSize: '2.8rem',
+                                fontFamily: '"Playfair Display", serif',
+                                textAlign: 'center',
+                                color: '#2D2D2D',
+                                marginBottom: '48px',
+                                fontWeight: '900'
+                            }}>
+                                Historias de Éxito
+                            </h2>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px', marginBottom: '48px' }}>
+                                {[
+                                    { name: 'María H.', text: 'Aprendí en 15 días y vendí mis primeras 5 piezas en la primera semana. Ahora tengo un ingreso extra de $300/mes.' },
+                                    { name: 'Laura G.', text: 'Aunque solo hago esto part-time, mis clientes me piden más. Las técnicas que enseñan son profesionales. 😍' }
+                                ].map((testimonio, idx) => (
+                                    <div key={idx} style={{
+                                        padding: '32px',
+                                        backgroundColor: 'white',
+                                        borderRadius: '12px',
+                                        border: '1px solid #FFB6D9'
+                                    }}>
+                                        <div style={{ display: 'flex', marginBottom: '16px' }}>
+                                            {[1,2,3,4,5].map((i) => <span key={i} style={{ color: '#E75480', fontSize: '18px' }}>⭐</span>)}
+                                        </div>
+                                        <p style={{ color: '#666', lineHeight: '1.8', fontSize: '0.95rem', marginBottom: '16px', fontStyle: 'italic' }}>
+                                            "{testimonio.text}"
+                                        </p>
+                                        <p style={{ fontWeight: '900', color: '#2D2D2D', margin: 0 }}>
+                                            - {testimonio.name}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* GARANTÍA */}
+                    <section style={{ backgroundColor: 'white', padding: '80px 20px' }}>
+                        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+                            <div style={{
+                                padding: '48px',
+                                backgroundColor: '#FFF5FA',
+                                borderRadius: '16px',
+                                border: '2px solid #E75480',
+                                textAlign: 'center'
+                            }}>
+                                <div style={{ fontSize: '48px', marginBottom: '24px' }}>🔒</div>
+                                <h2 style={{
+                                    fontSize: '2.2rem',
+                                    fontFamily: '"Playfair Display", serif',
+                                    color: '#2D2D2D',
+                                    fontWeight: '900',
+                                    marginBottom: '16px'
+                                }}>
+                                    Garantía 100% de 7 Días
+                                </h2>
+                                <p style={{ color: '#666', lineHeight: '1.8', fontSize: '1.05rem' }}>
+                                    Acceso completo por 7 días. Si cambias de idea, devolvemos tu dinero al 100%, sin preguntas. Cero riesgo.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* FAQ */}
+                    <section style={{ backgroundColor: '#FFF5FA', padding: '80px 20px' }}>
+                        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+                            <h2 style={{
+                                fontSize: '2.8rem',
+                                fontFamily: '"Playfair Display", serif',
+                                textAlign: 'center',
+                                color: '#2D2D2D',
+                                marginBottom: '48px',
+                                fontWeight: '900'
+                            }}>
+                                Preguntas Frecuentes
+                            </h2>
+
+                            <div style={{ display: 'grid', gap: '16px' }}>
+                                {[
+                                    { q: '¿Necesito experiencia previa?', a: 'No. El curso empieza desde cero. Si nunca hiciste bisutería, perfecto.' },
+                                    { q: '¿Cuánto tiempo debo invertir diariamente?', a: '15-30 minutos al día es suficiente. Es a tu ritmo.' },
+                                    { q: '¿Me enseñan a vender?', a: 'Sí. El curso incluye estrategia de precios y técnicas de venta.' },
+                                    { q: '¿Qué pasa si quedo atrapada en una técnica?', a: 'Acceso a comunidad privada. Soporte prioritario 24h.' },
+                                    { q: '¿Es de por vida?', a: 'Tienes acceso por 2 AÑOS COMPLETOS.' }
+                                ].map((faq, idx) => (
+                                    <FaqItem key={idx} q={faq.q} a={faq.a} idx={idx} expandedFaq={expandedFaq} setExpandedFaq={setExpandedFaq} />
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* CTA FINAL */}
+                    <section style={{
+                        background: 'linear-gradient(135deg, #E75480 0%, #D946A6 100%)',
+                        padding: '80px 20px',
+                        textAlign: 'center',
+                        color: 'white'
+                    }}>
+                        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+                            <h2 style={{
+                                fontSize: '2.8rem',
+                                fontFamily: '"Playfair Display", serif',
+                                fontWeight: '900',
+                                marginBottom: '24px'
+                            }}>
+                                Estás Lista para el Cambio
+                            </h2>
+                            <p style={{ fontSize: '1.2rem', marginBottom: '40px', fontWeight: '600' }}>
+                                Acceso inmediato • Garantía 7 días • Sin riesgos • Bonos $247 GRATIS
+                            </p>
+                            <CTAButton text="ACCESO POR $34 USD + BONOS GRATIS" />
+                        </div>
+                    </section>
+
+                    {/* FOOTER */}
+                    <footer style={{
+                        backgroundColor: '#2D2D2D',
+                        color: 'white',
+                        padding: '40px 20px',
+                        textAlign: 'center',
+                        fontSize: '0.9rem'
+                    }}>
+                        <p style={{ margin: '0 0 12px 0' }}>
+                            © 2024 Bisu Profesional VD • Todos los derechos reservados
+                        </p>
+                        <p style={{ margin: 0, opacity: '0.8' }}>
+                            Esta es una venta digital. Acceso inmediato después del pago.
+                        </p>
+                    </footer>
+                </div>
+            );
+        }
+
+        function FaqItem({ q, a, idx, expandedFaq, setExpandedFaq }) {
+            return (
+                <div style={{
+                    backgroundColor: 'white',
+                    border: '1px solid #FFB6D9',
+                    borderRadius: '12px',
+                    overflow: 'hidden'
+                }}>
+                    <button
+                        onClick={() => setExpandedFaq(expandedFaq === idx ? null : idx)}
+                        style={{
+                            width: '100%',
+                            padding: '24px',
+                            backgroundColor: expandedFaq === idx ? '#FFE8F5' : 'transparent',
+                            border: 'none',
+                            textAlign: 'left',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            transition: 'all 0.2s'
+                        }}
+                    >
+                        <h3 style={{ fontSize: '1.05rem', fontWeight: '900', color: '#2D2D2D', margin: 0 }}>
+                            {q}
+                        </h3>
+                        <span style={{ fontSize: '20px', transition: 'transform 0.3s', transform: expandedFaq === idx ? 'rotate(180deg)' : 'rotate(0)' }}>
+                            ▼
+                        </span>
+                    </button>
+                    {expandedFaq === idx && (
+                        <div style={{
+                            padding: '0 24px 24px',
+                            backgroundColor: '#FFF5FA',
+                            borderTop: '1px solid #FFB6D9'
+                        }}>
+                            <p style={{ color: '#666', lineHeight: '1.8', margin: 0 }}>
+                                {a}
+                            </p>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<LandingBisuteria />);
+    </script>
+</body>
+</html>
