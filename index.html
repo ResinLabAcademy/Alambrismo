@@ -16,7 +16,6 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #FFF5FA;
             line-height: 1.6;
-            color: #333;
         }
         
         .container {
@@ -25,12 +24,10 @@
             padding: 0 20px;
         }
         
-        /* HERO */
         .hero {
             background: linear-gradient(180deg, #FFF5FA 0%, #FFE8F5 50%, #FFD4E8 100%);
             padding: 48px 20px 60px;
             text-align: center;
-            position: relative;
         }
         
         .badge {
@@ -74,23 +71,19 @@
             font-size: clamp(1rem, 3vw, 1.3rem);
             color: #666;
             margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
         
-        .video-container {
-            max-width: 100%;
-            margin-bottom: 40px;
+        .video-wrapper {
+            margin: 40px 0;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
         }
         
-        .video-container iframe {
+        .video-wrapper iframe {
             width: 100%;
             height: 400px;
-            border: none;
+            display: block;
         }
         
         .btn {
@@ -103,10 +96,7 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 8px 24px rgba(231, 84, 128, 0.35);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: inline-block;
-            text-decoration: none;
-            font-family: inherit;
+            transition: all 0.3s;
         }
         
         .btn:hover {
@@ -116,7 +106,7 @@
         
         .pricing-box {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 40px auto 0;
             text-align: center;
             padding: 32px;
             background-color: white;
@@ -133,12 +123,6 @@
             margin: 0 0 12px 0;
         }
         
-        .price-old {
-            text-decoration: line-through;
-            color: #999;
-        }
-        
-        /* SECCIONES */
         section {
             padding: 80px 20px;
         }
@@ -183,13 +167,11 @@
         
         .card p {
             color: #666;
-            line-height: 1.6;
             margin: 0;
         }
         
         .card-white {
             background-color: white;
-            border-left: none;
             border: 1px solid #FFB6D9;
             text-align: center;
             transition: all 0.3s ease;
@@ -200,12 +182,6 @@
             box-shadow: 0 16px 48px rgba(231, 84, 128, 0.15);
         }
         
-        .emoji-big {
-            font-size: 3.5rem;
-            margin-bottom: 16px;
-        }
-        
-        /* BONOS */
         .bonos-section {
             background: linear-gradient(135deg, #E75480 0%, #D946A6 100%);
             color: white;
@@ -229,12 +205,23 @@
             color: white;
         }
         
-        .bono-card p {
+        .gradient-section {
+            background: linear-gradient(135deg, #E75480 0%, #D946A6 100%);
             color: white;
-            opacity: 0.95;
+            text-align: center;
         }
         
-        /* FAQ */
+        .gradient-section h2 {
+            color: white;
+        }
+        
+        footer {
+            background-color: #2D2D2D;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
         .faq-item {
             background-color: white;
             border: 1px solid #FFB6D9;
@@ -252,8 +239,6 @@
             cursor: pointer;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            transition: all 0.2s;
             font-size: 1.05rem;
             font-weight: 900;
             color: #2D2D2D;
@@ -264,16 +249,11 @@
             background-color: #FFF0F7;
         }
         
-        .faq-button.active {
-            background-color: #FFE8F5;
-        }
-        
         .faq-content {
             padding: 0 24px 24px;
             background-color: #FFF5FA;
             border-top: 1px solid #FFB6D9;
             color: #666;
-            line-height: 1.8;
             display: none;
         }
         
@@ -281,58 +261,15 @@
             display: block;
         }
         
-        .arrow {
-            transition: transform 0.3s;
-        }
-        
-        .arrow.rotate {
-            transform: rotate(180deg);
-        }
-        
-        /* GRADIENT SECTION */
-        .gradient-section {
-            background: linear-gradient(135deg, #E75480 0%, #D946A6 100%);
-            color: white;
-            text-align: center;
-        }
-        
-        .gradient-section h2 {
-            color: white;
-        }
-        
-        /* FOOTER */
-        footer {
-            background-color: #2D2D2D;
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-        }
-        
-        /* RESPONSIVE */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            section h2 {
-                font-size: 2rem;
-            }
-            
-            .video-container iframe {
-                height: 250px;
-            }
+            h1 { font-size: 2rem; }
+            section h2 { font-size: 2rem; }
+            .video-wrapper iframe { height: 250px; }
         }
     </style>
 </head>
 <body>
-    <!-- HERO -->
+    <!-- HERO CON VIDEO -->
     <section class="hero">
         <div class="container">
             <div class="badge">🔥 OFERTA ESPECIAL: 75% DE DESCUENTO</div>
@@ -348,16 +285,17 @@
                 Curso pregrabado • Acceso inmediato • 15 días para dominar técnicas de wire wrapping, coiling y diseño
             </p>
             
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+            <!-- VIDEO AQUI -->
+            <div class="video-wrapper">
+                <iframe width="100%" height="400" src="https://www.youtube.com/embed/PhQDtf9YxOY" title="Intro Bisu Profesional VD" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             
             <button class="btn" onclick="irAHotmart()">ACCESO POR $34 USD HOY</button>
             
-            <div class="pricing-box" style="margin-top: 40px;">
+            <div class="pricing-box">
                 <p style="font-size: 0.95rem; color: #666; margin-bottom: 12px;">Valorado en</p>
                 <div style="font-size: 1.2rem; margin-bottom: 8px;">
-                    <span class="price-old">$137 USD</span>
+                    <span style="text-decoration: line-through; color: #999;">$137 USD</span>
                 </div>
                 <h3>$34 USD</h3>
                 <p style="color: #666; margin: 0; font-size: 0.9rem;">
@@ -373,17 +311,17 @@
             <h2>¿Por Qué No Vendes?</h2>
             <div class="grid">
                 <div class="card">
-                    <p style="color: #E75480; font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Problema 01</p>
+                    <p style="color: #E75480; font-weight: 700; margin-bottom: 12px;">Problema 01</p>
                     <h3>Aprendiste a hacer piezas</h3>
                     <p>Pero no sabes cómo VENDERLAS. Creas piezas bonitas pero el dinero no entra. 💔</p>
                 </div>
                 <div class="card">
-                    <p style="color: #E75480; font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Problema 02</p>
+                    <p style="color: #E75480; font-weight: 700; margin-bottom: 12px;">Problema 02</p>
                     <h3>No tienes técnicas avanzadas</h3>
                     <p>Tus piezas se ven "caseras". Necesitas wire wrapping, coiling, tramado con estilo. 🔧</p>
                 </div>
                 <div class="card">
-                    <p style="color: #E75480; font-weight: 700; font-size: 0.95rem; margin-bottom: 12px;">Problema 03</p>
+                    <p style="color: #E75480; font-weight: 700; margin-bottom: 12px;">Problema 03</p>
                     <h3>Sin marca ni identidad</h3>
                     <p>Tus creaciones no tienen HISTORIA. La gente ve accesorios, no inversiones. ✨</p>
                 </div>
@@ -396,20 +334,20 @@
         <div class="container">
             <h2>Los 3 Pilares del Negocio</h2>
             <div class="grid">
-                <div class="card-white">
-                    <div class="emoji-big">🔨</div>
-                    <h3>DOMINA LAS TÉCNICAS</h3>
-                    <p>Wire wrapping, coiling, espirales, tramado. Crea 15 piezas PREMIUM paso a paso.</p>
+                <div class="card-white" style="padding: 32px;">
+                    <div style="font-size: 3.5rem; margin-bottom: 16px;">🔨</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 900; color: #2D2D2D; margin-bottom: 12px;">DOMINA LAS TÉCNICAS</h3>
+                    <p style="color: #666;">Wire wrapping, coiling, espirales, tramado. Crea 15 piezas PREMIUM paso a paso.</p>
                 </div>
-                <div class="card-white">
-                    <div class="emoji-big">✨</div>
-                    <h3>CONSTRUYE TU MARCA</h3>
-                    <p>Crea colecciones con identidad. Tus piezas cuenten HISTORIAS que se venden.</p>
+                <div class="card-white" style="padding: 32px;">
+                    <div style="font-size: 3.5rem; margin-bottom: 16px;">✨</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 900; color: #2D2D2D; margin-bottom: 12px;">CONSTRUYE TU MARCA</h3>
+                    <p style="color: #666;">Crea colecciones con identidad. Tus piezas cuenten HISTORIAS que se venden.</p>
                 </div>
-                <div class="card-white">
-                    <div class="emoji-big">💰</div>
-                    <h3>MONETIZA AL INSTANTE</h3>
-                    <p>Catalogo listo para vender. Precios que reflejen el trabajo premium. Dinero real.</p>
+                <div class="card-white" style="padding: 32px;">
+                    <div style="font-size: 3.5rem; margin-bottom: 16px;">💰</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 900; color: #2D2D2D; margin-bottom: 12px;">MONETIZA AL INSTANTE</h3>
+                    <p style="color: #666;">Catalogo listo para vender. Precios que reflejen el trabajo premium. Dinero real.</p>
                 </div>
             </div>
         </div>
@@ -423,33 +361,25 @@
                 Un mapa claro de cada paso que darás
             </p>
             <div style="display: grid; gap: 20px;">
-                <div style="padding: 32px; background-color: #FFE8F5; border-radius: 12px; border-left: 5px solid #E75480; display: grid; grid-template-columns: 80px 1fr; gap: 24px;">
-                    <div style="font-size: 2.5rem; font-weight: 900; color: #E75480; font-family: 'Playfair Display', serif;">01</div>
-                    <div>
-                        <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">DÍA 1-3: Transforma en Brillo</h3>
-                        <p style="color: #666; margin: 0;">Aprendés desde cero. Dominas bases, materiales y creás tus primeras 4 piezas. Ya tienes tu primer catálogo.</p>
-                    </div>
+                <div style="padding: 32px; background-color: #FFE8F5; border-radius: 12px; border-left: 5px solid #E75480;">
+                    <div style="font-size: 2.5rem; font-weight: 900; color: #E75480; font-family: 'Playfair Display', serif; margin-bottom: 16px;">01</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">DÍA 1-3: Transforma en Brillo</h3>
+                    <p style="color: #666; margin: 0;">Aprendés desde cero. Dominas bases, materiales y creás tus primeras 4 piezas. Ya tienes tu primer catálogo.</p>
                 </div>
-                <div style="padding: 32px; background-color: #FFE8F5; border-radius: 12px; border-left: 5px solid #E75480; display: grid; grid-template-columns: 80px 1fr; gap: 24px;">
-                    <div style="font-size: 2.5rem; font-weight: 900; color: #E75480; font-family: 'Playfair Display', serif;">02</div>
-                    <div>
-                        <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">DÍA 4-7: Tu Primera Colección</h3>
-                        <p style="color: #666; margin: 0;">Técnicas avanzadas (coiling, espirales). Tu catálogo entra en línea PREMIUM. Creás brazaletes que piden precio.</p>
-                    </div>
+                <div style="padding: 32px; background-color: #FFE8F5; border-radius: 12px; border-left: 5px solid #E75480;">
+                    <div style="font-size: 2.5rem; font-weight: 900; color: #E75480; font-family: 'Playfair Display', serif; margin-bottom: 16px;">02</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">DÍA 4-7: Tu Primera Colección</h3>
+                    <p style="color: #666; margin: 0;">Técnicas avanzadas (coiling, espirales). Tu catálogo entra en línea PREMIUM. Creás brazaletes que piden precio.</p>
                 </div>
-                <div style="padding: 32px; background-color: #FFD4E8; border-radius: 12px; border-left: 5px solid #E75480; display: grid; grid-template-columns: 80px 1fr; gap: 24px;">
-                    <div style="font-size: 2.5rem; font-weight: 900; color: #E75480; font-family: 'Playfair Display', serif;">03</div>
-                    <div>
-                        <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">DÍA 8-11: Tramado con Identidad</h3>
-                        <p style="color: #666; margin: 0;">Técnicas finas deseadas. Piezas elegantes con HISTORIA. Creas colecciones que la gente quiere tener.</p>
-                    </div>
+                <div style="padding: 32px; background-color: #FFD4E8; border-radius: 12px; border-left: 5px solid #E75480;">
+                    <div style="font-size: 2.5rem; font-weight: 900; color: #E75480; font-family: 'Playfair Display', serif; margin-bottom: 16px;">03</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">DÍA 8-11: Tramado con Identidad</h3>
+                    <p style="color: #666; margin: 0;">Técnicas finas deseadas. Piezas elegantes con HISTORIA. Creas colecciones que la gente quiere tener.</p>
                 </div>
-                <div style="padding: 32px; background-color: #E8F5FF; border-radius: 12px; border-left: 5px solid #E75480; display: grid; grid-template-columns: 80px 1fr; gap: 24px;">
-                    <div style="font-size: 2.5rem; font-weight: 900; color: #E75480; font-family: 'Playfair Display', serif;">04</div>
-                    <div>
-                        <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">DÍA 12-15: El Brillo que Empodera</h3>
-                        <p style="color: #666; margin: 0;">Terminas con 15 piezas PREMIUM. Tu catálogo está listo. Ya no solo sabes crear: ESTÁS LISTA PARA VENDER.</p>
-                    </div>
+                <div style="padding: 32px; background-color: #E8F5FF; border-radius: 12px; border-left: 5px solid #E75480;">
+                    <div style="font-size: 2.5rem; font-weight: 900; color: #E75480; font-family: 'Playfair Display', serif; margin-bottom: 16px;">04</div>
+                    <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">DÍA 12-15: El Brillo que Empodera</h3>
+                    <p style="color: #666; margin: 0;">Terminas con 15 piezas PREMIUM. Tu catálogo está listo. Ya no solo sabes crear: ESTÁS LISTA PARA VENDER.</p>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 48px;">
@@ -458,75 +388,37 @@
         </div>
     </section>
 
-    <!-- PROYECTOS -->
-    <section class="pink-section">
-        <div class="container">
-            <h2>Ejemplos de Tus Creaciones</h2>
-            <div class="grid">
-                <div style="background-color: white; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); border: 1px solid #FFB6D9;">
-                    <img src="IMG_5370.jpg" style="width: 100%; height: 300px; object-fit: cover;">
-                    <div style="padding: 24px;">
-                        <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">Brazalete Turquesa Premium</h3>
-                        <p style="color: #666; font-size: 0.95rem; margin: 0;">Técnica avanzada de wire wrapping con piedras naturales</p>
-                    </div>
-                </div>
-                <div style="background-color: white; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); border: 1px solid #FFB6D9;">
-                    <img src="IMG_5369.jpg" style="width: 100%; height: 300px; object-fit: cover;">
-                    <div style="padding: 24px;">
-                        <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">Anillo Regulable de Piedras</h3>
-                        <p style="color: #666; font-size: 0.95rem; margin: 0;">Diseño elegante y versátil para cualquier ocasión</p>
-                    </div>
-                </div>
-                <div style="background-color: white; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); border: 1px solid #FFB6D9;">
-                    <img src="IMG_5368.png" style="width: 100%; height: 300px; object-fit: cover;">
-                    <div style="padding: 24px;">
-                        <h3 style="font-size: 1.2rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">Aretes Globo Corazón</h3>
-                        <p style="color: #666; font-size: 0.95rem; margin: 0;">Creaciones delicadas con materiales de calidad</p>
-                    </div>
-                </div>
-            </div>
-            <div style="background-color: #FFE8F5; padding: 24px; border-radius: 12px; margin: 48px 0; border: 2px solid #E75480; text-align: center;">
-                <p style="color: #2D2D2D; font-weight: 700; font-size: 1rem; margin: 0;">
-                    💡 Los emojis arriba son placeholders. Puedes reemplazarlos con tus fotos reales.
-                </p>
-            </div>
-            <div style="text-align: center;">
-                <button class="btn" onclick="irAHotmart()">APRENDER A CREAR ESTO Y MÁS</button>
-            </div>
-        </div>
-    </section>
-
     <!-- INCLUYE -->
-    <section class="white-section">
+    <section class="pink-section">
         <div class="container">
             <h2>Lo Que Incluye Tu Acceso</h2>
             <div class="grid">
-                <div style="padding: 24px; background-color: #FFF5FA; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
+                <div style="padding: 24px; background-color: white; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
                     <div style="color: #E75480; margin-bottom: 12px; font-size: 32px;">▶️</div>
                     <h3 style="font-size: 1.1rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">15 Videoclases</h3>
                     <p style="color: #666; font-size: 0.9rem; margin: 0;">Paso a paso desde cero hasta PREMIUM</p>
                 </div>
-                <div style="padding: 24px; background-color: #FFF5FA; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
+                <div style="padding: 24px; background-color: white; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
                     <div style="color: #E75480; margin-bottom: 12px; font-size: 32px;">⚡</div>
                     <h3 style="font-size: 1.1rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">Acceso 2 Años</h3>
                     <p style="color: #666; font-size: 0.9rem; margin: 0;">Revisa cuando quieras, cuantas veces quieras</p>
                 </div>
-                <div style="padding: 24px; background-color: #FFF5FA; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
+                <div style="padding: 24px; background-color: white; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
                     <div style="color: #E75480; margin-bottom: 12px; font-size: 32px;">✅</div>
                     <h3 style="font-size: 1.1rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">3 Bonos Gratis</h3>
                     <p style="color: #666; font-size: 0.9rem; margin: 0;">Asesorías, herramientas exclusivas y más</p>
                 </div>
-                <div style="padding: 24px; background-color: #FFF5FA; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
+                <div style="padding: 24px; background-color: white; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
                     <div style="color: #E75480; margin-bottom: 12px; font-size: 32px;">🔒</div>
                     <h3 style="font-size: 1.1rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">Comunidad Privada</h3>
                     <p style="color: #666; font-size: 0.9rem; margin: 0;">Resuelve dudas con otras estudiantes</p>
                 </div>
-                <div style="padding: 24px; background-color: #FFF5FA; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
+                <div style="padding: 24px; background-color: white; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
                     <div style="color: #E75480; margin-bottom: 12px; font-size: 32px;">⭐</div>
                     <h3 style="font-size: 1.1rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">Garantía 7 Días</h3>
                     <p style="color: #666; font-size: 0.9rem; margin: 0;">Si no te gusta, devolvemos tu dinero</p>
                 </div>
-                <div style="padding: 24px; background-color: #FFF5FA; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
+                <div style="padding: 24px; background-color: white; border-radius: 12px; border: 1px solid #FFB6D9; text-align: center;">
                     <div style="color: #E75480; margin-bottom: 12px; font-size: 32px;">⏰</div>
                     <h3 style="font-size: 1.1rem; font-weight: 900; color: #2D2D2D; margin-bottom: 8px;">Soporte Prioritario</h3>
                     <p style="color: #666; font-size: 0.9rem; margin: 0;">Respuestas a tus preguntas en 24h</p>
@@ -547,17 +439,17 @@
             </p>
             <div class="grid">
                 <div class="bono-card">
-                    <p style="font-size: 0.9rem; font-weight: 700; margin: 0 0 12px 0; opacity: 0.9;">BONO 1</p>
+                    <p style="font-size: 0.9rem; font-weight: 700; margin: 0 0 12px 0;">BONO 1</p>
                     <h3>Asesoría Privada 1 Hora</h3>
                     <p>Sesión 1-a-1 conmigo. Resuelvo tus dudas específicas. (Valor: $97)</p>
                 </div>
                 <div class="bono-card">
-                    <p style="font-size: 0.9rem; font-weight: 700; margin: 0 0 12px 0; opacity: 0.9;">BONO 2</p>
+                    <p style="font-size: 0.9rem; font-weight: 700; margin: 0 0 12px 0;">BONO 2</p>
                     <h3>Kit de Herramientas Premium</h3>
                     <p>Plantillas, guía, checklist y catálogo de referencia. (Valor: $75)</p>
                 </div>
                 <div class="bono-card">
-                    <p style="font-size: 0.9rem; font-weight: 700; margin: 0 0 12px 0; opacity: 0.9;">BONO 3</p>
+                    <p style="font-size: 0.9rem; font-weight: 700; margin: 0 0 12px 0;">BONO 3</p>
                     <h3>Acceso a Comunidad VIP</h3>
                     <p>Acceso 3 meses a grupo privado y networking. (Valor: $75)</p>
                 </div>
@@ -572,20 +464,16 @@
     <section class="pink-section">
         <div class="container">
             <h2>Historias de Éxito</h2>
-            <div class="grid-2">
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                 <div style="padding: 32px; background-color: white; border-radius: 12px; border: 1px solid #FFB6D9;">
-                    <div style="display: flex; margin-bottom: 16px;">
-                        <span style="color: #E75480; font-size: 18px;">⭐⭐⭐⭐⭐</span>
-                    </div>
+                    <div style="margin-bottom: 16px;">⭐⭐⭐⭐⭐</div>
                     <p style="color: #666; line-height: 1.8; font-size: 0.95rem; margin-bottom: 16px; font-style: italic;">
                         "Aprendí en 15 días y vendí mis primeras 5 piezas en la primera semana. Ahora tengo un ingreso extra de $300/mes."
                     </p>
                     <p style="font-weight: 900; color: #2D2D2D; margin: 0;">- María H.</p>
                 </div>
                 <div style="padding: 32px; background-color: white; border-radius: 12px; border: 1px solid #FFB6D9;">
-                    <div style="display: flex; margin-bottom: 16px;">
-                        <span style="color: #E75480; font-size: 18px;">⭐⭐⭐⭐⭐</span>
-                    </div>
+                    <div style="margin-bottom: 16px;">⭐⭐⭐⭐⭐</div>
                     <p style="color: #666; line-height: 1.8; font-size: 0.95rem; margin-bottom: 16px; font-style: italic;">
                         "Aunque solo hago esto part-time, mis clientes me piden más. Las técnicas que enseñan son profesionales. 😍"
                     </p>
@@ -618,35 +506,35 @@
                 <div class="faq-item">
                     <button class="faq-button" onclick="toggleFaq(this)">
                         <span>¿Necesito experiencia previa?</span>
-                        <span class="arrow">▼</span>
+                        <span>▼</span>
                     </button>
                     <div class="faq-content">No. El curso empieza desde cero. Si nunca hiciste bisutería, perfecto.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-button" onclick="toggleFaq(this)">
                         <span>¿Cuánto tiempo debo invertir diariamente?</span>
-                        <span class="arrow">▼</span>
+                        <span>▼</span>
                     </button>
                     <div class="faq-content">15-30 minutos al día es suficiente. Es a tu ritmo.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-button" onclick="toggleFaq(this)">
                         <span>¿Me enseñan a vender?</span>
-                        <span class="arrow">▼</span>
+                        <span>▼</span>
                     </button>
                     <div class="faq-content">Sí. El curso incluye estrategia de precios y técnicas de venta.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-button" onclick="toggleFaq(this)">
                         <span>¿Qué pasa si quedo atrapada en una técnica?</span>
-                        <span class="arrow">▼</span>
+                        <span>▼</span>
                     </button>
                     <div class="faq-content">Acceso a comunidad privada. Soporte prioritario 24h.</div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-button" onclick="toggleFaq(this)">
                         <span>¿Es de por vida?</span>
-                        <span class="arrow">▼</span>
+                        <span>▼</span>
                     </button>
                     <div class="faq-content">Tienes acceso por 2 AÑOS COMPLETOS.</div>
                 </div>
@@ -670,13 +558,12 @@
         <p style="margin: 0 0 12px 0;">
             © 2024 Bisu Profesional VD • Todos los derechos reservados
         </p>
-        <p style="margin: 0; opacity: 0.8;">
+        <p style="margin: 0;">
             Esta es una venta digital. Acceso inmediato después del pago.
         </p>
     </footer>
 
     <script>
-        // TIMER
         function updateTimer() {
             const timerEl = document.getElementById('timer');
             let [h, m, s] = [24, 0, 0];
@@ -691,22 +578,19 @@
             }, 1000);
         }
         
-        // FAQ
         function toggleFaq(btn) {
             const content = btn.nextElementSibling;
-            const arrow = btn.querySelector('.arrow');
+            const arrow = btn.querySelector('span:last-child');
             
             content.classList.toggle('show');
-            btn.classList.toggle('active');
-            arrow.classList.toggle('rotate');
+            btn.style.backgroundColor = content.classList.contains('show') ? '#FFE8F5' : 'transparent';
+            arrow.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0)';
         }
         
-        // HOTMART
         function irAHotmart() {
             window.location.href = 'https://go.hotmart.com/V106696153J?ap=da1f';
         }
         
-        // INIT
         updateTimer();
     </script>
 </body>
