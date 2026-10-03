@@ -33,18 +33,19 @@ header{padding:28px 0 8px;display:flex;align-items:center;gap:12px}.mark{width:3
 <div class="wrap">
 <header><div class="mark"></div><div class="brand">Seminario de Alambrismo</div></header>
 <section class="hero">
-<span class="eyebrow">CLASE 1</span>
+<span class="eyebrow">CLASE</span>
 <h1>Seminario demostrativo de alambrismo</h1>
 <p class="sub">Aprende los primeros pasos para crear tus propias piezas de bisutería y descubre cómo trabajar esta técnica desde cero.</p>
 <div class="stage">
-<div class="stage-head"><h2>Clase 1 · Alambrismo</h2><span class="chip wait" id="chip">Próximamente</span></div>
+<div class="stage-head"><h2>Clase · Alambrismo</h2><span class="chip wait" id="chip">Próximamente</span></div>
 <div class="panel" id="waiting">
 <p class="when" id="when"></p>
 <div class="count" role="timer" aria-live="off"><div class="cell"><span class="num" id="days">00</span><span class="lbl">días</span></div><div class="cell"><span class="num" id="hours">00</span><span class="lbl">horas</span></div><div class="cell"><span class="num" id="minutes">00</span><span class="lbl">min</span></div><div class="cell"><span class="num" id="seconds">00</span><span class="lbl">seg</span></div></div>
 <p class="hint">El video se habilitará durante el horario de la clase.</p>
 </div>
 <div id="live" hidden>
-<div class="player"><iframe id="video" src="https://www.youtube.com/embed/6OkPxxumGiU?rel=0" title="Seminario demostrativo de alambrismo · Clase 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="player"><iframe id="video" src="https://www.youtube.com/embed/6OkPxxumGiU?rel=0" title="Seminario demostrativo de alambrismo 
+                     " allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 </div>
 <div class="msg" id="done" hidden>El acceso a esta clase ya se cerró.</div>
 </div>
@@ -66,7 +67,7 @@ header{padding:28px 0 8px;display:flex;align-items:center;gap:12px}.mark{width:3
 <footer>Seminario Demostrativo de Alambrismo</footer>
 <script>
 /* CAMBIA SOLO ESTA LÍNEA CADA SEMANA */
-const FECHA_CLASE = "2026-10-09T18:30:00-06:00";
+const FECHA_CLASE = "2026-10-02T21:33:00-06:00";
 /* No necesitas modificar nada más. */
 const classDate=new Date(FECHA_CLASE).getTime();
 const days=document.getElementById('days'),hours=document.getElementById('hours'),minutes=document.getElementById('minutes'),seconds=document.getElementById('seconds');
