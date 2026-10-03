@@ -1,124 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seminario Demostrativo de Alambrismo</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fffafc;
-      color: #3f3540;
-      line-height: 1.5;
-    }
-
-    .page {
-      width: min(100%, 900px);
-      margin: 0 auto;
-      padding: 24px 16px 50px;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 12px 0 24px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      background: #f8e7ef;
-      color: #9b607b;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .5px;
-      padding: 7px 13px;
-      border-radius: 999px;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      font-size: clamp(25px, 6vw, 40px);
-      line-height: 1.15;
-      color: #392f37;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      max-width: 650px;
-      margin: 0 auto;
-      color: #766b73;
-      font-size: 16px;
-    }
-
-    /* =========================
-       CUENTA REGRESIVA
-       Viernes 9 de octubre de 2026 - 6:30 p. m.
-       Costa Rica (UTC-6)
-       ========================= */
-
-    // 9 oct 2026 a las 6:30 p. m. en Costa Rica = 10 oct 2026 00:30 UTC
-    const classDate = Date.UTC(2026, 9, 10, 0, 30, 0);
-
-    const accessMessage = document.getElementById("accessMessage");
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
-
-    function updateCountdown() {
-      const difference = classDate - Date.now();
-
-      if (difference <= 0) {
-        daysEl.textContent = "00";
-        hoursEl.textContent = "00";
-        minutesEl.textContent = "00";
-        secondsEl.textContent = "00";
-        if (accessMessage) accessMessage.style.display = "block";
-        return;
-      }
-
-      const totalSeconds = Math.floor(difference / 1000);
-      const days = Math.floor(totalSeconds / 86400);
-      const hours = Math.floor((totalSeconds % 86400) / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-
-      daysEl.textContent = String(days).padStart(2, "0");
-      hoursEl.textContent = String(hours).padStart(2, "0");
-      minutesEl.textContent = String(minutes).padStart(2, "0");
-      secondsEl.textContent = String(seconds).padStart(2, "0");
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-
-    const chatForm = document.getElementById("chatForm");
-    const chatInput = document.getElementById("chatInput");
-
-    chatForm.addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      const message = chatInput.value.trim();
-
-      if (!message) return;
-
-      // Simula el envío sin mostrar mensajes anteriores
-      // ni guardar conversaciones.
-      chatInput.value = "";
-      chatInput.placeholder = "Mensaje enviado ✓";
-
-      setTimeout(() => {
-        chatInput.placeholder = "Escribe un mensaje...";
-      }, 1500);
-    });
-  </script>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seminario Demostrativo de Alambrismo</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;background:#fffafc;color:#3f3540;line-height:1.5}.page{width:min(100%,900px);margin:0 auto;padding:24px 16px 50px}.hero{text-align:center;padding:12px 0 24px}.eyebrow{display:inline-block;background:#f8e7ef;color:#9b607b;font-size:13px;font-weight:700;letter-spacing:.5px;padding:7px 13px;border-radius:999px;margin-bottom:14px}h1{font-size:clamp(25px,6vw,40px);line-height:1.15;color:#392f37;margin-bottom:10px}.subtitle{max-width:650px;margin:0 auto;color:#766b73;font-size:16px}.countdown-card{background:linear-gradient(135deg,#fff0f5,#fff8f3);border-radius:20px;padding:22px 15px;text-align:center;margin-bottom:20px;box-shadow:0 8px 30px rgba(80,55,70,.08)}.countdown-title{font-size:16px;font-weight:700;color:#674657;margin-bottom:5px}.countdown-date{font-size:14px;color:#766b73;margin-bottom:16px}.countdown{display:flex;justify-content:center;gap:10px}.time-box{min-width:65px}.time-number{background:#fff;border-radius:13px;padding:10px 7px;font-size:25px;font-weight:700;color:#a96d88;box-shadow:0 4px 15px rgba(80,55,70,.06)}.time-label{font-size:10px;color:#766b73;margin-top:5px;text-transform:uppercase;font-weight:700}.access-message{display:none;margin-top:15px;font-weight:700;color:#a96d88}.video-card{background:#fff;border-radius:20px;padding:10px;box-shadow:0 8px 30px rgba(80,55,70,.09);margin-bottom:18px}.video-wrapper{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:14px;background:#eee8ec}.video-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.chat-card{background:#fff;border-radius:20px;box-shadow:0 8px 30px rgba(80,55,70,.08);overflow:hidden;margin-bottom:22px}.chat-header{background:#f8e7ef;padding:13px 16px;display:flex;align-items:center;gap:9px;font-weight:700;color:#684657}.online-dot{width:9px;height:9px;border-radius:50%;background:#7dbb8b;display:inline-block}.chat-form{display:flex;gap:8px;padding:10px;background:#fff}.chat-form input{flex:1;min-width:0;border:1px solid #e4d8de;border-radius:999px;padding:11px 14px;font-size:14px;outline:none;background:#fff}.chat-form input:focus{border-color:#c58ba4}.chat-form button{border:0;border-radius:999px;background:#a96d88;color:#fff;padding:0 17px;font-weight:700;cursor:pointer}.section-title{text-align:center;font-size:24px;color:#443740;margin:28px 0 15px}.info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:18px}.info-card{background:#fff;border-radius:18px;padding:20px;box-shadow:0 7px 24px rgba(80,55,70,.07)}.info-card h3{font-size:17px;margin-bottom:8px;color:#674657}.info-card p{font-size:14px;color:#746970}.class-card{background:linear-gradient(135deg,#fff0f5,#fff8f3);border-radius:20px;padding:24px;text-align:center;box-shadow:0 7px 24px rgba(80,55,70,.07);margin-top:14px}.class-number{display:inline-block;background:#a96d88;color:#fff;border-radius:999px;padding:6px 13px;font-size:12px;font-weight:700;margin-bottom:10px}.class-card h2{font-size:22px;color:#443740;margin-bottom:8px}.class-card p{color:#766b73;font-size:14px}footer{text-align:center;color:#9a8e95;font-size:12px;margin-top:30px}@media(max-width:600px){.page{padding:18px 12px 35px}.countdown{gap:6px}.time-box{min-width:55px}.time-number{font-size:21px;padding:9px 5px}.time-label{font-size:9px}.info-grid{grid-template-columns:1fr}.chat-form button{padding:0 14px}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="hero"><span class="eyebrow">CLASE 1</span><h1>SEMINARIO DEMOSTRATIVO DE ALAMBRISMO</h1><p class="subtitle">Aprende los fundamentos del alambrismo y descubre cómo comenzar a crear tus primeras piezas paso a paso.</p></header>
+<section class="countdown-card"><div class="countdown-title">La clase comienza en:</div><div class="countdown-date" id="countdownDate"></div><div class="countdown"><div class="time-box"><div class="time-number" id="days">00</div><div class="time-label">Días</div></div><div class="time-box"><div class="time-number" id="hours">00</div><div class="time-label">Horas</div></div><div class="time-box"><div class="time-number" id="minutes">00</div><div class="time-label">Min</div></div><div class="time-box"><div class="time-number" id="seconds">00</div><div class="time-label">Seg</div></div></div><div class="access-message" id="accessMessage">✨ ¡La clase ya está disponible!</div></section>
+<section class="video-card"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/6OkPxxumGiU" title="Seminario demostrativo de alambrismo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></section>
+<section class="chat-card"><div class="chat-header"><span class="online-dot"></span>Chat de la clase</div><form class="chat-form" id="chatForm"><input type="text" id="chatInput" placeholder="Escribe un mensaje..." autocomplete="off"><button type="submit">Enviar</button></form></section>
+<h2 class="section-title">En esta clase aprenderás</h2><section class="info-grid"><article class="info-card"><h3>✨ Fundamentos</h3><p>Conoce los conceptos básicos del alambrismo y cómo empezar a trabajar esta técnica.</p></article><article class="info-card"><h3>🧰 Materiales</h3><p>Identifica los materiales y herramientas que necesitas para comenzar.</p></article><article class="info-card"><h3>🔗 Técnica</h3><p>Observa paso a paso cómo se trabaja el alambre para crear piezas.</p></article><article class="info-card"><h3>💎 Primeras piezas</h3><p>Aprende los fundamentos necesarios para comenzar a crear tus propias piezas.</p></article></section>
+<section class="class-card"><span class="class-number">CLASE 1</span><h2>Seminario demostrativo de alambrismo</h2><p>Una clase pensada para quienes quieren conocer el alambrismo y dar sus primeros pasos en esta técnica.</p></section><footer>Seminario demostrativo de alambrismo</footer>
+</main>
+<script>
+/* CAMBIA SOLO ESTA LÍNEA CADA SEMANA. Formato: AAAA-MM-DDTHH:MM:SS-06:00 */
+const FECHA_CLASE = "2026-10-09T18:30:00-06:00";
+const targetDate = new Date(FECHA_CLASE).getTime();
+const daysEl=document.getElementById("days"),hoursEl=document.getElementById("hours"),minutesEl=document.getElementById("minutes"),secondsEl=document.getElementById("seconds"),accessMessage=document.getElementById("accessMessage"),countdownDate=document.getElementById("countdownDate");
+const fecha=new Date(FECHA_CLASE);const opciones={weekday:"long",day:"numeric",month:"long"};countdownDate.textContent=fecha.toLocaleDateString("es-CR",opciones)+" · 6:30 p. m. Costa Rica";
+function updateCountdown(){const difference=targetDate-Date.now();if(difference<=0){daysEl.textContent="00";hoursEl.textContent="00";minutesEl.textContent="00";secondsEl.textContent="00";accessMessage.style.display="block";return}const totalSeconds=Math.floor(difference/1000);daysEl.textContent=String(Math.floor(totalSeconds/86400)).padStart(2,"0");hoursEl.textContent=String(Math.floor(totalSeconds%86400/3600)).padStart(2,"0");minutesEl.textContent=String(Math.floor(totalSeconds%3600/60)).padStart(2,"0");secondsEl.textContent=String(totalSeconds%60).padStart(2,"0")}
+updateCountdown();setInterval(updateCountdown,1000);
+const chatForm=document.getElementById("chatForm"),chatInput=document.getElementById("chatInput");chatForm.addEventListener("submit",function(event){event.preventDefault();if(!chatInput.value.trim())return;chatInput.value="";chatInput.placeholder="Mensaje enviado ✓";setTimeout(function(){chatInput.placeholder="Escribe un mensaje..."},1500)});
+</script>
 </body>
 </html>
