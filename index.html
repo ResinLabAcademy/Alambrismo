@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seminario demostrativo de alambrismo</title>
-<meta name="description" content="Seminario demostrativo de alambrismo · Clase 1">
+<meta name="description" content="Seminario demostrativo de alambrismo · Clase">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -49,8 +49,8 @@ header{padding:28px 0 8px;display:flex;align-items:center;gap:12px}.mark{width:3
 </div>
 <div id="live" hidden>
 <div class="player">
-<iframe id="video" allow="autoplay; encrypted-media" allowfullscreen style="display:none;"></iframe>
-<div id="placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f1e9e7;color:#766b73;">Iniciando transmisión en vivo...</div>
+<iframe id="video" allow="encrypted-media" allowfullscreen style="display:none;"></iframe>
+<div id="placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f1e9e7;color:#766b73;font-size:1.1rem;">La clase comienza a las 6:30 p. m.</div>
 <div class="hotmart-button" id="hotmartBtn" hidden>
 <a href="https://go.hotmart.com/V106696153J?ap=da1f" target="_blank" rel="noopener noreferrer">🎁 Acceso al Seminario Completo</a>
 </div>
@@ -78,7 +78,7 @@ header{padding:28px 0 8px;display:flex;align-items:center;gap:12px}.mark{width:3
 /* ===== CONFIGURACIÓN ===== */
 const FECHA_CLASE = "2025-10-09T18:30:00-06:00";
 const VIDEO_ID = "6OkPxxumGiU";
-const HOTMART_TIME = 61.14 * 60; // 1:01:14 convertido a segundos (3674.4 segundos)
+const HOTMART_TIME = 61.14 * 60; // 1:01:14 en segundos
 /* ======================== */
 
 const classDate=new Date(FECHA_CLASE).getTime();
@@ -90,16 +90,16 @@ const fecha=new Date(FECHA_CLASE);
 const formatter=new Intl.DateTimeFormat('es-CR',{timeZone:'America/Costa_Rica',weekday:'long',day:'numeric',month:'long'});
 when.textContent=formatter.format(fecha).replace(/^./,m=>m.toUpperCase())+' · 6:30 p. m. · Costa Rica';
 
-let videoStartTime = null; // Marca cuándo comenzó el video
+let videoStartTime = null;
 
 function loadVideo(){
  const iframe=document.getElementById('video');
  const placeholder=document.getElementById('placeholder');
- // Video en VIVO - Sin controles, sin retroceso, sin pausa
+ // Video en VIVO - Sin controles, sin retroceso, sin pausa, CON autoplay
  iframe.src=`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&controls=0&modestbranding=1&rel=0&fs=0&showinfo=0`;
  iframe.style.display='block';
  placeholder.style.display='none';
- videoStartTime = Date.now(); // Registra cuándo comenzó
+ videoStartTime = Date.now();
 }
 
 function checkHotmartButton(){
@@ -108,7 +108,7 @@ function checkHotmartButton(){
  const elapsedSeconds = (Date.now() - videoStartTime) / 1000;
  
  if(elapsedSeconds >= HOTMART_TIME && hotmartBtn.hidden){
-  hotmartBtn.hidden = false; // MUESTRA EL BOTÓN
+  hotmartBtn.hidden = false;
  }
 }
 
@@ -122,13 +122,13 @@ function updateCountdown(){
   days.textContent='00';hours.textContent='00';minutes.textContent='00';seconds.textContent='00';
   waiting.hidden=true;live.hidden=false;done.hidden=true;chip.className='chip live';chip.textContent='EN VIVO AHORA';
   loadVideo();
-  checkHotmartButton(); // Verifica si debe mostrar el botón
+  checkHotmartButton();
  }
 }
 
 updateCountdown();
 setInterval(updateCountdown,1000);
-setInterval(checkHotmartButton,500); // Verifica cada 500ms si lllegó la hora del botón
+setInterval(checkHotmartButton,500);
 
 const chatForm=document.getElementById('chatForm'),chatInput=document.getElementById('chatInput'),chatStatus=document.getElementById('chatStatus');
 chatForm.addEventListener('submit',e=>{e.preventDefault();if(!chatInput.value.trim())return;chatInput.value='';chatStatus.textContent='Mensaje enviado ✓';setTimeout(()=>chatStatus.textContent='',1500)});
