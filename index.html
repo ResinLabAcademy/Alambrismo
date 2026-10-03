@@ -33,19 +33,21 @@ header{padding:28px 0 8px;display:flex;align-items:center;gap:12px}.mark{width:3
 <div class="wrap">
 <header><div class="mark"></div><div class="brand">Seminario de Alambrismo</div></header>
 <section class="hero">
-<span class="eyebrow">CLASE</span>
+<span class="eyebrow">CLASE 1</span>
 <h1>Seminario demostrativo de alambrismo</h1>
 <p class="sub">Aprende los primeros pasos para crear tus propias piezas de bisutería y descubre cómo trabajar esta técnica desde cero.</p>
 <div class="stage">
-<div class="stage-head"><h2>Clase · Alambrismo</h2><span class="chip wait" id="chip">Próximamente</span></div>
+<div class="stage-head"><h2>Clase 1 · Alambrismo</h2><span class="chip wait" id="chip">Próximamente</span></div>
 <div class="panel" id="waiting">
 <p class="when" id="when"></p>
 <div class="count" role="timer" aria-live="off"><div class="cell"><span class="num" id="days">00</span><span class="lbl">días</span></div><div class="cell"><span class="num" id="hours">00</span><span class="lbl">horas</span></div><div class="cell"><span class="num" id="minutes">00</span><span class="lbl">min</span></div><div class="cell"><span class="num" id="seconds">00</span><span class="lbl">seg</span></div></div>
 <p class="hint">El video se habilitará durante el horario de la clase.</p>
 </div>
 <div id="live" hidden>
-<div class="player"><iframe id="video" src="https://www.youtube.com/embed/6OkPxxumGiU?rel=0" title="Seminario demostrativo de alambrismo 
-                     " allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+<div class="player">
+<iframe id="video" allow="autoplay; encrypted-media" allowfullscreen style="display:none;"></iframe>
+<div id="placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f1e9e7;color:#766b73;">Iniciando transmisión en vivo...</div>
+</div>
 </div>
 <div class="msg" id="done" hidden>El acceso a esta clase ya se cerró.</div>
 </div>
@@ -66,9 +68,11 @@ header{padding:28px 0 8px;display:flex;align-items:center;gap:12px}.mark{width:3
 </div>
 <footer>Seminario Demostrativo de Alambrismo</footer>
 <script>
-/* CAMBIA SOLO ESTA LÍNEA CADA SEMANA */
-const FECHA_CLASE = "2026-10-02T21:33:00-06:00";
-/* No necesitas modificar nada más. */
+/* ===== CONFIGURACIÓN ===== */
+const FECHA_CLASE = "2025-10-09T18:30:00-06:00";
+const VIDEO_ID = "6OkPxxumGiU"; // REEMPLAZA CON TU VIDEO ID DE YOUTUBE
+/* ======================== */
+
 const classDate=new Date(FECHA_CLASE).getTime();
 const days=document.getElementById('days'),hours=document.getElementById('hours'),minutes=document.getElementById('minutes'),seconds=document.getElementById('seconds');
 const waiting=document.getElementById('waiting'),live=document.getElementById('live'),done=document.getElementById('done'),chip=document.getElementById('chip'),when=document.getElementById('when');
@@ -76,6 +80,16 @@ const pad=n=>String(n).padStart(2,'0');
 const fecha=new Date(FECHA_CLASE);
 const formatter=new Intl.DateTimeFormat('es-CR',{timeZone:'America/Costa_Rica',weekday:'long',day:'numeric',month:'long'});
 when.textContent=formatter.format(fecha).replace(/^./,m=>m.toUpperCase())+' · 6:30 p. m. · Costa Rica';
+
+function loadVideo(){
+ const iframe=document.getElementById('video');
+ const placeholder=document.getElementById('placeholder');
+ // Video en VIVO - Sin controles, sin retroceso, sin pausa
+ iframe.src=`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&controls=0&modestbranding=1&rel=0&fs=0&showinfo=0`;
+ iframe.style.display='block';
+ placeholder.style.display='none';
+}
+
 function updateCountdown(){
  const diff=classDate-Date.now();
  if(diff>0){
@@ -84,10 +98,14 @@ function updateCountdown(){
   waiting.hidden=false;live.hidden=true;done.hidden=true;chip.className='chip wait';chip.textContent='Próximamente';
  }else{
   days.textContent='00';hours.textContent='00';minutes.textContent='00';seconds.textContent='00';
-  waiting.hidden=true;live.hidden=false;done.hidden=true;chip.className='chip live';chip.textContent='Disponible ahora';
+  waiting.hidden=true;live.hidden=false;done.hidden=true;chip.className='chip live';chip.textContent='EN VIVO AHORA';
+  loadVideo(); // CARGA EL VIDEO SOLO CUANDO LLEGA LA HORA
  }
 }
-updateCountdown();setInterval(updateCountdown,1000);
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
 const chatForm=document.getElementById('chatForm'),chatInput=document.getElementById('chatInput'),chatStatus=document.getElementById('chatStatus');
 chatForm.addEventListener('submit',e=>{e.preventDefault();if(!chatInput.value.trim())return;chatInput.value='';chatStatus.textContent='Mensaje enviado ✓';setTimeout(()=>chatStatus.textContent='',1500)});
 </script>
