@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seminario demostrativo de alambrismo</title>
-<meta name="description" content="Seminario demostrativo de alambrismo · Clase">
+<meta name="description" content="Seminario demostrativo de alambrismo · Clase 1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,15 +21,11 @@ header{padding:28px 0 8px;display:flex;align-items:center;gap:12px}.mark{width:3
 .stage{margin-top:34px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden}.stage-head{padding:18px 22px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.stage-head h2{font-size:1.15rem;font-weight:600}.chip{font-size:.85rem;font-weight:600;padding:5px 12px;border-radius:99px;border:1px solid var(--line)}.chip.live{background:var(--pink);border-color:var(--pink);color:#fff}.chip.wait{color:var(--amber);border-color:rgba(255,178,74,.5)}.chip.done{color:#8b7c81}
 .panel{padding:34px 22px 38px;text-align:center}.panel[hidden]{display:none}.when{font-size:1.05rem;color:#766b73}.when small{display:block;margin-top:4px;font-size:.88rem;color:#9a8e95}
 .count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:520px;margin:26px auto 6px}.cell{border:1px solid var(--line);border-radius:16px;padding:14px 4px 10px;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(250,242,240,.8))}.num{display:block;font-weight:800;font-size:clamp(2rem,9vw,3.3rem);line-height:1;font-variant-numeric:tabular-nums}.lbl{font-size:.8rem;color:#8b7c81}.hint{margin-top:18px;font-size:.95rem;color:#76686d}
-.player{position:relative;aspect-ratio:16/9;background:#f1e9e7}.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.hotmart-button{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;animation:slideUp 0.5s ease-out}@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-.hotmart-button a{display:inline-block;background:linear-gradient(135deg,#ff5fa2,#a96d88);color:#fff;padding:14px 32px;border-radius:99px;font-weight:700;text-decoration:none;box-shadow:0 8px 32px rgba(255,95,162,0.4);transition:all 0.3s ease;font-size:1rem}
-.hotmart-button a:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,95,162,0.6)}
-.shield{position:absolute;inset:0;z-index:2;background:transparent}.sound{position:absolute;z-index:3;left:50%;bottom:16px;transform:translateX(-50%);font:600 1rem 'Figtree',sans-serif;background:#e7b58d;color:#4b3023;border:0;border-radius:99px;padding:12px 22px;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.45)}.sound[hidden]{display:none}.msg{padding:48px 22px;text-align:center;color:#766b73}
+.player{position:relative;aspect-ratio:16/9;background:#f1e9e7}.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.shield{position:absolute;inset:0;z-index:2;background:transparent}.sound{position:absolute;z-index:3;left:50%;bottom:16px;transform:translateX(-50%);font:600 1rem 'Figtree',sans-serif;background:#e7b58d;color:#4b3023;border:0;border-radius:99px;padding:12px 22px;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.45)}.sound[hidden]{display:none}.msg{padding:48px 22px;text-align:center;color:#766b73}
 .chat{margin-top:26px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.72);overflow:hidden}.chat-head{padding:15px 18px;border-bottom:1px solid var(--line);font-weight:600}.online{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--teal);margin-right:8px}.chat-form{display:flex;gap:10px;padding:14px}.chat-form input{flex:1;min-width:0;background:#fff;border:1px solid #e4d8de;color:#3f3540;border-radius:12px;padding:12px 14px;font:inherit;outline:none}.chat-form input:focus{border-color:#c58ba4}.chat-form button{border:0;border-radius:12px;padding:0 20px;background:#d8a7b1;color:#4b3037;font-weight:700;cursor:pointer}.chat-status{padding:0 14px 12px;text-align:center;font-size:.85rem;color:var(--teal);min-height:0}
 .info-title{margin:34px 0 14px;font-family:'Bricolage Grotesque';font-size:1.35rem}.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}.info-card{padding:20px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.72)}.info-card h3{font-family:'Bricolage Grotesque';font-size:1rem;margin-bottom:8px}.info-card p{font-size:.9rem;color:#746970}
 .class-card{padding:25px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.72);margin-bottom:60px}.class-card .small{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--amber);font-weight:700}.class-card h2{margin:7px 0;font-size:1.5rem}.class-card p{color:#76686d}footer{position:relative;z-index:1;text-align:center;padding:0 20px 40px;font-size:.85rem;color:#9a8b90}
-@media(max-width:700px){.info-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.wrap{width:min(920px,calc(100% - 24px))}.hero{padding-top:30px}.count{gap:6px}.cell{padding:12px 2px 9px}.num{font-size:clamp(1.7rem,12vw,2.5rem)}.lbl{font-size:.68rem}.info-grid{grid-template-columns:1fr}.chat-form button{padding:0 14px}.hotmart-button a{padding:12px 24px;font-size:0.95rem}}
+@media(max-width:700px){.info-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.wrap{width:min(920px,calc(100% - 24px))}.hero{padding-top:30px}.count{gap:6px}.cell{padding:12px 2px 9px}.num{font-size:clamp(1.7rem,12vw,2.5rem)}.lbl{font-size:.68rem}.info-grid{grid-template-columns:1fr}.chat-form button{padding:0 14px}}
 </style>
 </head>
 <body>
@@ -37,24 +33,18 @@ header{padding:28px 0 8px;display:flex;align-items:center;gap:12px}.mark{width:3
 <div class="wrap">
 <header><div class="mark"></div><div class="brand">Seminario de Alambrismo</div></header>
 <section class="hero">
-<span class="eyebrow">CLASE</span>
+<span class="eyebrow">CLASE 1</span>
 <h1>Seminario demostrativo de alambrismo</h1>
 <p class="sub">Aprende los primeros pasos para crear tus propias piezas de bisutería y descubre cómo trabajar esta técnica desde cero.</p>
 <div class="stage">
-<div class="stage-head"><h2>Clase · Alambrismo</h2><span class="chip wait" id="chip">Próximamente</span></div>
+<div class="stage-head"><h2>Clase 1 · Alambrismo</h2><span class="chip wait" id="chip">Próximamente</span></div>
 <div class="panel" id="waiting">
 <p class="when" id="when"></p>
 <div class="count" role="timer" aria-live="off"><div class="cell"><span class="num" id="days">00</span><span class="lbl">días</span></div><div class="cell"><span class="num" id="hours">00</span><span class="lbl">horas</span></div><div class="cell"><span class="num" id="minutes">00</span><span class="lbl">min</span></div><div class="cell"><span class="num" id="seconds">00</span><span class="lbl">seg</span></div></div>
 <p class="hint">El video se habilitará durante el horario de la clase.</p>
 </div>
 <div id="live" hidden>
-<div class="player">
-<iframe id="video" allow="encrypted-media" allowfullscreen style="display:none;"></iframe>
-<div id="placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f1e9e7;color:#766b73;font-size:1.1rem;">La clase comienza a las 6:30 p. m.</div>
-<div class="hotmart-button" id="hotmartBtn" hidden>
-<a href="https://go.hotmart.com/V106696153J?ap=da1f" target="_blank" rel="noopener noreferrer">🎁 Acceso al Seminario Completo</a>
-</div>
-</div>
+<div class="player"><iframe id="video" src="https://www.youtube.com/embed/6OkPxxumGiU?rel=0" title="Seminario demostrativo de alambrismo · Clase 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 </div>
 <div class="msg" id="done" hidden>El acceso a esta clase ya se cerró.</div>
 </div>
@@ -70,48 +60,21 @@ header{padding:28px 0 8px;display:flex;align-items:center;gap:12px}.mark{width:3
 <article class="info-card"><h3>🔗 Técnica</h3><p>Observa paso a paso cómo se trabaja el alambre para crear piezas.</p></article>
 <article class="info-card"><h3>💎 Primeras piezas</h3><p>Aprende los fundamentos necesarios para comenzar a crear tus propias piezas.</p></article>
 </section>
-<section class="class-card"><div class="small">Seminario demostrativo</div><h2>Clase · Alambrismo</h2><p>Una clase pensada para quienes quieren conocer el alambrismo y dar sus primeros pasos en esta técnica.</p></section>
+<section class="class-card"><div class="small">Seminario demostrativo</div><h2>Clase 1 · Alambrismo</h2><p>Una clase pensada para quienes quieren conocer el alambrismo y dar sus primeros pasos en esta técnica.</p></section>
 </section>
 </div>
 <footer>Seminario Demostrativo de Alambrismo</footer>
 <script>
-/* ===== CONFIGURACIÓN ===== */
-const FECHA_CLASE = "2025-10-09T18:30:00-06:00";
-const VIDEO_ID = "6OkPxxumGiU";
-const HOTMART_TIME = 61.14 * 60; // 1:01:14 en segundos
-/* ======================== */
-
+/* CAMBIA SOLO ESTA LÍNEA CADA SEMANA */
+const FECHA_CLASE = "2026-10-09T18:30:00-06:00";
+/* No necesitas modificar nada más. */
 const classDate=new Date(FECHA_CLASE).getTime();
 const days=document.getElementById('days'),hours=document.getElementById('hours'),minutes=document.getElementById('minutes'),seconds=document.getElementById('seconds');
 const waiting=document.getElementById('waiting'),live=document.getElementById('live'),done=document.getElementById('done'),chip=document.getElementById('chip'),when=document.getElementById('when');
-const hotmartBtn=document.getElementById('hotmartBtn');
 const pad=n=>String(n).padStart(2,'0');
 const fecha=new Date(FECHA_CLASE);
 const formatter=new Intl.DateTimeFormat('es-CR',{timeZone:'America/Costa_Rica',weekday:'long',day:'numeric',month:'long'});
 when.textContent=formatter.format(fecha).replace(/^./,m=>m.toUpperCase())+' · 6:30 p. m. · Costa Rica';
-
-let videoStartTime = null;
-
-function loadVideo(){
- const iframe=document.getElementById('video');
- const placeholder=document.getElementById('placeholder');
- // Video en VIVO - Sin controles, sin retroceso, sin pausa, CON autoplay
- iframe.src=`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&controls=0&modestbranding=1&rel=0&fs=0&showinfo=0`;
- iframe.style.display='block';
- placeholder.style.display='none';
- videoStartTime = Date.now();
-}
-
-function checkHotmartButton(){
- if(videoStartTime === null) return;
- 
- const elapsedSeconds = (Date.now() - videoStartTime) / 1000;
- 
- if(elapsedSeconds >= HOTMART_TIME && hotmartBtn.hidden){
-  hotmartBtn.hidden = false;
- }
-}
-
 function updateCountdown(){
  const diff=classDate-Date.now();
  if(diff>0){
@@ -120,16 +83,10 @@ function updateCountdown(){
   waiting.hidden=false;live.hidden=true;done.hidden=true;chip.className='chip wait';chip.textContent='Próximamente';
  }else{
   days.textContent='00';hours.textContent='00';minutes.textContent='00';seconds.textContent='00';
-  waiting.hidden=true;live.hidden=false;done.hidden=true;chip.className='chip live';chip.textContent='EN VIVO AHORA';
-  loadVideo();
-  checkHotmartButton();
+  waiting.hidden=true;live.hidden=false;done.hidden=true;chip.className='chip live';chip.textContent='Disponible ahora';
  }
 }
-
-updateCountdown();
-setInterval(updateCountdown,1000);
-setInterval(checkHotmartButton,500);
-
+updateCountdown();setInterval(updateCountdown,1000);
 const chatForm=document.getElementById('chatForm'),chatInput=document.getElementById('chatInput'),chatStatus=document.getElementById('chatStatus');
 chatForm.addEventListener('submit',e=>{e.preventDefault();if(!chatInput.value.trim())return;chatInput.value='';chatStatus.textContent='Mensaje enviado ✓';setTimeout(()=>chatStatus.textContent='',1500)});
 </script>
