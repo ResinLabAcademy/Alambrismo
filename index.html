@@ -73,7 +73,6 @@ footer{position:relative;z-index:1;text-align:center;padding:0 20px 40px;font-si
 
 .chat{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.5);overflow:hidden}
 .chat-head{padding:15px 18px;border-bottom:1px solid var(--line);font-weight:600;color:var(--mist)}
-.chat-messages{height:150px;background:rgba(255,255,255,.72);}
 .online{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--teal);margin-right:8px}
 .chat-form{display:flex;gap:10px;padding:14px}
 .chat-form input{flex:1;min-width:0;background:#fff;border:1px solid var(--line);color:var(--mist);border-radius:12px;padding:12px 14px;font:inherit;outline:none}
@@ -82,7 +81,11 @@ footer{position:relative;z-index:1;text-align:center;padding:0 20px 40px;font-si
 .chat-form button{border:0;border-radius:12px;padding:0 20px;background:var(--teal);color:#fff;font-weight:700;cursor:pointer;transition:all .15s}
 .chat-form button:hover{background:#15a89f;transform:translateY(-1px)}
 .chat-status{padding:0 14px 12px;text-align:center;font-size:.85rem;color:var(--teal);min-height:0}
-.hotmart-button{text-align:center;padding:18px 18px 4px}.hotmart-button[hidden]{display:none}.hotmart-button a{display:inline-block;background:#20b45b;color:#fff;text-decoration:none;font-weight:800;padding:14px 28px;border-radius:999px;box-shadow:0 7px 18px rgba(32,180,91,.25);transition:transform .15s,filter .15s}.hotmart-button a:hover{transform:translateY(-2px);filter:brightness(.96)}
+
+.hotmart-button{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:10;animation:slideUp 0.5s ease-out}
+@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.hotmart-button a{display:inline-block;background:linear-gradient(135deg,var(--pink),var(--amber));color:#fff;padding:14px 32px;border-radius:99px;font-weight:700;text-decoration:none;box-shadow:0 8px 32px rgba(255,95,162,0.4);transition:all 0.3s ease;font-size:1rem}
+.hotmart-button a:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,95,162,0.6)}
 </style>
 </head>
 <body>
@@ -115,25 +118,19 @@ footer{position:relative;z-index:1;text-align:center;padding:0 20px 40px;font-si
           <div id="yt"></div>
           <div class="shield"></div>
           <button class="sound" id="sound" hidden>Activar sonido</button>
-        </div>
-
-        <div class="hotmart-button" id="hotmartBtn" hidden>
-          <a href="https://go.hotmart.com/V106696153J?ap=da1f" target="_blank" rel="noopener noreferrer">INSCRÍBETE AQUÍ</a>
+          <div class="hotmart-button" id="hotmartBtn" hidden>
+            <a href="https://go.hotmart.com/V106696153J?ap=da1f" target="_blank" rel="noopener noreferrer">🎁 Acceso al Seminario Completo</a>
+          </div>
         </div>
         
-      </div>
-
-      <!-- CHAT FALSO: espacio para escribir y enviar mensajes, sin mensajes previos -->
-      <div class="chat" id="classChat" style="margin-top:26px;">
-        <div class="chat-head"><span class="online"></span>Chat de la clase</div>
-        <div class="chat-messages" aria-hidden="true"></div>
-        <form class="chat-form" id="chatForm">
-          <input type="text" id="chatInput" placeholder="Escribe un mensaje..." autocomplete="off">
-          <button type="submit">Enviar</button>
-        </form>
-        <div class="chat-status" id="chatStatus" aria-live="polite"></div>
-      </div>
-
+        <div class="chat" style="margin-top:26px;">
+          <div class="chat-head"><span class="online"></span>Chat de la clase</div>
+          <form class="chat-form" id="chatForm">
+            <input type="text" id="chatInput" placeholder="Escribe un mensaje..." autocomplete="off">
+            <button type="submit">Enviar</button>
+          </form>
+          <div class="chat-status" id="chatStatus"></div>
+        </div>
       </div>
 
       <div class="msg" id="pMsg" hidden></div>
@@ -157,7 +154,7 @@ const CONFIG = {
   whatsappUrl: '',
   whatsappTexto: 'Unirme al grupo de WhatsApp',
   ctaUrl: 'https://go.hotmart.com/V106696153J?ap=da1f',
-  ctaTexto: 'INSCRÍBETE AQUÍ',
+  ctaTexto: '🎁 Acceso al Seminario Completo',
   clases: [
     {
       titulo: 'Clase',
@@ -224,8 +221,7 @@ function mountPlayer(i){
     events: {
       onReady: e => {
         if(offset(c) >= e.target.getDuration() - 1){ finish(i); return; }
-        checkHotmartButton();
-        e.target.playVideo(); $('sound').hidden = false; checkHotmartButton();
+        e.target.playVideo(); $('sound').hidden = false;
       },
       onStateChange: e => {
         if(e.data === 0) finish(i);
@@ -236,19 +232,6 @@ function mountPlayer(i){
 }
 
 $('sound').onclick = () => { if(player){ player.unMute(); player.setVolume(100); } $('sound').hidden = true; };
-
-function checkHotmartButton(){
-  if(!player || !hotmartBtn) return;
-  try {
-    const seconds = player.getCurrentTime();
-    if(seconds >= HOTMART_SHOW_AT){
-      hotmartBtn.hidden = false;
-      hotmartShown = true;
-    } else if(!hotmartShown){
-      hotmartBtn.hidden = true;
-    }
-  } catch(e){}
-}
 
 function finish(i){
   clases[i].ended = true; unmount(); mounted = -1; manual = false; tick();
@@ -281,11 +264,8 @@ function tick(){
     $('when').innerHTML = w + (localTZ !== TZ ? '<small>En tu zona: ' + cap(clean(fLocal.format(c.t))) + '</small>' : '');
   } else if(state === 'live'){
     if(mounted !== sel) mountPlayer(sel);
-    else if(player && player.getCurrentTime){
-      checkHotmartButton();
-      if(n % 15 === 0){
+    else if(player && player.getCurrentTime && n % 15 === 0){
       try{ if(Math.abs(player.getCurrentTime() - offset(c)) > 6) player.seekTo(offset(c), true); }catch(e){}
-      }
     }
   } else {
     show('pDone');
@@ -303,11 +283,6 @@ const chatForm = document.getElementById('chatForm');
 const chatInput = document.getElementById('chatInput');
 const chatStatus = document.getElementById('chatStatus');
 
-// Mostrar el botón de inscripción exactamente al minuto 1:01:14 del video.
-const HOTMART_SHOW_AT = 3674; // 1h 1m 14s
-const hotmartBtn = document.getElementById('hotmartBtn');
-let hotmartShown = false;
-
 chatForm.addEventListener('submit', e => {
   e.preventDefault();
   if (!chatInput.value.trim()) return;
@@ -315,6 +290,32 @@ chatForm.addEventListener('submit', e => {
   chatStatus.textContent = 'Mensaje enviado ✓';
   setTimeout(() => chatStatus.textContent = '', 1500);
 });
+
+/* Hotmart Button - aparece a los 1:01:14 */
+const HOTMART_TIME = 61.14 * 60; // 1:01:14 en segundos
+const hotmartBtn = document.getElementById('hotmartBtn');
+let videoStartTime = null;
+
+// Cuando el video carga, guardamos el tiempo
+const originalMountPlayer = mountPlayer;
+window.mountPlayer = function(i) {
+  originalMountPlayer(i);
+  videoStartTime = Date.now();
+};
+
+function checkHotmartButton() {
+  if (videoStartTime === null || player === null) return;
+  
+  try {
+    const elapsedSeconds = player.getCurrentTime ? player.getCurrentTime() : 0;
+    
+    if (elapsedSeconds >= HOTMART_TIME && hotmartBtn.hidden) {
+      hotmartBtn.hidden = false;
+    }
+  } catch(e) {}
+}
+
+setInterval(checkHotmartButton, 500);
 </script>
 </body>
 </html>
