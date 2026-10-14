@@ -162,8 +162,8 @@ const CONFIG = {
     {
       titulo: 'Clase',
       tema: 'SEMINARIO DEMOSTRATIVO DE ALAMBRISMO',
-      inicio: '2026-10-09T18:30:00-06:00',   // 9 octubre 6:30 pm Costa Rica
-      video: '6OkPxxumGiU'
+      inicio: '2026-10-16T18:30:00-06:00',   // 16 octubre 6:30 pm Costa Rica
+      video: '2vIIBXTl0I8vequZ'
     }
   ]
 };
@@ -172,7 +172,7 @@ const CONFIG = {
 const $ = id => document.getElementById(id);
 const TZ = 'America/Costa_Rica';
 const qs = new URLSearchParams(location.search);
-// Para probar: tuweb.com/?ahora=2025-10-09T18:31:00-06:00
+// Para probar: tuweb.com/?ahora=2025-10-16T18:31:00-06:00
 const skew = qs.get('ahora') ? new Date(qs.get('ahora')).getTime() - Date.now() : 0;
 const now = () => Date.now() + skew;
 
